@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>爱好走廊</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/move-top.js"></script>
+</head>
+<body>
+<!--header-->
+<div class="header">
+	<div class="container">
+		<div class="logo">
+			<h1>
+				<a href="index.html">My Home</a>
+			</h1>
+		</div>
+	</div>
+</div>
+<!--header-->
+<!--banner-->
+<div class="banner top-banner">
+	<div class="container">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<!-- toggle nav -->
+				<div class="navbar-header">
+					 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+        <!-- toggle nav -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			  		<ul class="nav navbar-nav cl-effect-16">
+						<li><a href="index.html">主页 </a></li>
+						<li><a href="about.html">关于</a></li>
+						<li class="active"><a href="gallery.html">爱好</a></li>
+						<li><a href="codes.html">经历</a></li>
+			  		</ul>
+				</div>
+		  	</div>
+		</nav>
+	</div>
+</div>
+<!--banner-->
+<div class="content">
+	<div class="gallery">
+		<h2>My hobby</h2>
+		<div class="gallery-grids">
+			<ul>
+				<li>
+					<a href="images/daima1.jpg">
+						<img src="images/htmll.jpg" alt="" />
+						<div class="glry-bgd">
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="images/yuedu.jpg">
+						<img src="images/yuedu.jpg" alt="" />
+						<div class="glry-bgd">
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="images/yundong.jpg">
+						<img src="images/yundong.jpg" alt="" />
+						<div class="glry-bgd">
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="images/lvyou.jpg">
+						<img src="images/lvyou.jpg" alt="" />
+						<div class="glry-bgd">
+						</div>
+					</a>
+				</li>
+			</ul>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!--//gallery -->
+	<div class="indicate">
+		<div class="container">
+			<div class="indicate-grids">
+				<div class="col-md-3 indicate-grid">
+					<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+					<p>ShanXi TaiYuan BaiJie</p>
+				</div>
+				<div class="col-md-3 indicate-grid">
+					<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+					<p>Telephone :  +86 18535833079</p>
+				</div>
+				<div class="col-md-3 indicate-grid">
+					<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+					<p>E-mail : <a href="mailto:example@mail.com"> baijiu1100@hotmail.com</a></p>
+				</div>
+				<div class="col-md-3 indicate-grid">
+					<span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+					<p>QQ :  514948639</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--footer-->
+<div class="footer-section">
+	<div class="container">
+		<div class="footer-top">
+			<p>
+				Copyright &copy; 2017
+			</p>
+		</div>
+			<a href="#" id="toTop" style="display: none;">
+
+			</a>
+	</div>
+</div>
+<script>
+    $(function() {
+        $(window).scroll(function () {
+            if ($(this).scrollTop() >= 395) {
+                $("#toTop").css({
+                    display:"block"
+                });
+            }
+            else{
+                $("#toTop").css({
+                    display:"none"
+                });
+            }
+        });
+
+        $("#toTop").on("click",function(){
+            {$('html,body').animate({scrollTop: '0px'}, 600);}
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        setTimeout(function () {
+            $(".header").stop(true,true).slideUp();
+        },300);
+    });
+</script>
+</body>
+</html>

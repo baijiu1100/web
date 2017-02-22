@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url("images/img4.jpg") fixed center;
+        }
+        a{
+            text-decoration: none;
+            color: #ccc;
+        }
+        ul{
+            list-style: none;
+        }
+        .ADD{
+            background-color: rgba(70,0,40,12);
+        }
+        .w{
+            margin: 0 auto;
+            width:100%;
+            background-color: rgba(0,0,0,0.2);
+        }
+        .w1{
+            margin:0 auto;
+            width: 80%;
+            height: 100%;
+        }
+        .w .header{
+            margin:0 auto;
+            width:80%;
+            height:70px;
+        }
+        .w .left li{
+            float: left;
+            margin-left: 28px;
+            line-height: 70px;
+            text-align: center;
+            font-size: 18px;
+            color: #ccc;
+        }
+        .w .left li a{
+            display: block;
+            width: 60px;
+            transition: all 0.5s;
+        }
+        .w .left li a:hover{
+            background-color: rgba(0,0,0,0.2);
+        }
+        .right{
+            float: right;
+        }
+        .right li{
+            float: left;
+            width: 70px;
+            height: 30px;
+            line-height: 70px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .right .touxiang{
+            padding:10px 0 ;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+        .right .touxiang img.tx{
+            width: 50px;
+            height: 50px;
+            border-radius: 100px;
+            text-align: center;
+            transition: box-shadow 0.5s;
+        }
+        .right .touxiang .tx:hover{
+            box-shadow: 0 0 15px #1FAEFF;
+        }
+        .post{
+            width: 180px;
+            height: 200px;
+            position: absolute;
+            top: 70px;
+            left: -40px;
+            background-color: #EE7942;
+            box-shadow: rgba(0,0,0,0.16) 0 2px 4px;
+            border-radius: 0 0 4px 4px;
+            z-index:555;
+        }
+        .post span{
+            display: block;
+            width: 100%;
+            height: 47px;
+        }
+        .post img{
+            width: 150px;
+            height: 150px;
+        }
+        .xiaoxi{
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+        .menu{
+            position: absolute;
+            top: 70px;
+            left: 0;
+            text-align: center;
+            width: 110px;
+            background-color: #fff;
+            font-size: 12px;
+            box-shadow: rgba(0,0,0,0.16) 0 2px 4px;
+            border-radius: 0 0 4px 4px;
+            z-index:555;
+        }
+        .menu p a{
+            height: 42px;
+            line-height:42px;
+            cursor: pointer;
+            color: #222;
+        }
+        .dt{
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+        .dongtai{
+            width: 200px;
+            height: 270px;
+            background-color: #fff;
+            position: absolute;
+            top: 70px;
+            left: -100%;
+            display: none;
+            z-index:555;
+            box-shadow: rgba(0,0,0,0.16) 0 2px 4px;
+            border-radius: 0 0 4px 4px;
+        }
+        .dongtai p{
+            text-align: center;
+            font-size: 16px;
+            line-height:50px;
+        }
+        .dongtai p a{
+            cursor: pointer;
+            color: #222;
+        }
+        .header .right li.ls .history{
+            position: relative;
+            top: 0;
+            left: -90px;
+            background-color: #fff;
+            width: 210px;
+            height: 270px;
+            display: none;
+            z-index:555;
+            box-shadow: rgba(0,0,0,0.16) 0 2px 4px;
+            border-radius: 0 0 4px 4px;
+        }
+        .header .right li.ls .history li.dic{
+            text-align: center;
+            line-height:50px;
+            width: 100%;
+            height: 20%;
+        }
+        .history li a{
+            cursor: pointer;
+            color: #222;
+        }
+        .right .xx:hover{
+            color: #00a1d6;
+            background-color: rgba(0,0,0,0.1);
+        }
+        .right li a{
+            display: block;
+            transition: all 0.5s;
+            font-size: 18px;
+        }
+        .right li a:hover{
+            background-color: rgba(0,0,0,0.03);
+        }
+        .bg .logo{
+            width: 100%;
+            height: 240px;
+            margin-top:80px;
+            z-index:-1;
+        }
+        .bg .logo .txt{
+            text-align: center;
+            line-height:300px;
+            font-size:54px ;
+            color: #eee;
+            z-index:-1;
+            font-family:"Dancing Script";
+        }
+        .content{
+            width: 100%;
+            height:250px;
+        }
+        .content .title{
+            width:50%;
+            height:50px;
+            position: relative;
+            top: 0;
+            left: 27%;
+        }
+        .content .title::before{
+            display: block;
+            left: -5%;
+            position: absolute;
+            top: 8px;
+            width: 45%;
+            content: '';
+            border-top:1px solid #ededed;
+        }
+        .content .title::after{
+            width: 45%;
+            right:-5%;
+            display: block;
+            position: absolute;
+            top: 8px;
+            content: '';
+            border-top:1px solid #ededed;
+        }
+        .content .title a.txt1{
+            display: block;
+            font-size: 20px;
+            color: #999;
+            outline:0;
+            text-align: center;
+            font-family:"Dancing Script";
+        }
+        section{
+            padding:0em 3% 4em;
+            text-align: center;
+            font-size: 1.5em;
+        }
+        .content .all{
+            margin:auto;
+            display: table;
+            transition: all 0.5s;
+            transform-style: preserve-3d;
+        }
+        .content .all ul li{
+            width: 180px;
+            float: left;
+            line-height:100px;
+            text-align: center;
+            display: inline;
+            font-size: 20px;
+            margin-left: 50px;
+            font-family: "Microsoft YaHei","helvetica neue",arial,sans-serif;
+            text-shadow: 0 1px 0 rgba(0,0,0,.3);
+            font-weight:900;
+            border-radius: 10px;
+            transition: all 0.5s;
+            user-select:none;
+            cursor: pointer;
+        }
+        .content .all ul li:hover{
+            box-shadow: rgba(0, 0, 0, 0.2) 7px 9px 5px 3px;
+        }
+        .content .all ul li a{
+            display: block;
+            width: 100%;
+            height: 100%;
+            color: #bbb;
+        }
+        .tc1{
+            overflow-y: scroll;
+            background-color: #fff;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 1.0;
+            animation: my 1s;
+        }
+        @keyframes my {
+            0%{
+                width:10%;
+                height: 10%;
+                opacity:0;
+            }
+            50%{
+                opacity:1;
+            }
+        }
+        .tc2{
+            overflow-y: scroll;
+            background-color: #fff;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 1.0;
+            animation: my 1s;
+        }
+        .tc3{
+            overflow-y: scroll;
+            background-color: #fff;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 1.0;
+            animation: my 1s;
+        }
+        .tc4{
+            overflow-y: scroll;
+            background-color: #fff;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 1.0;
+            animation: my 1s;
+        }
+        .tc1>.d1{
+             z-index:10;
+             width: 60%;
+             overflow: hidden;
+             height: 100%;
+             opacity:0.7;
+             background-color: #fff;
+             margin: 0 auto;
+         }
+        .tc2>.d2{
+            z-index:10;
+            width: 60%;
+            overflow: hidden;
+            height: 100%;
+            opacity:0.7;
+            background-color: #fff;
+            margin: 0 auto;
+        }
+        .tc3>.d3{
+            z-index:10;
+            width: 60%;
+            overflow: hidden;
+            height: 100%;
+            opacity:0.7;
+            background-color: #fff;
+            margin: 0 auto;
+        }
+        .tc4>.d4{
+            z-index:10;
+            width: 60%;
+            overflow: hidden;
+            height: 100%;
+            opacity:0.7;
+            background-color: #fff;
+            margin: 0 auto;
+        }
+        .tc1 .d1 .dummy-img1{
+            width: 50%;
+            height: 45%;
+            margin: 70px auto;
+        }
+        .tc1 .d1 img{
+            width: 100%;
+            height: 100%;
+        }
+        .tc1 .d1 p{
+            width: 100%;
+            height: 3%;
+            margin: 15px auto;
+            color: #a112d9;
+            text-indent: 2em;
+        }
+
+        .tc2 .d2 .dummy-img1{
+            width: 50%;
+            height: 45%;
+            margin: 60px auto;
+        }
+        .tc2 .d2 img{
+            width: 100%;
+            height: 100%;
+        }
+        .tc2 .d2 p{
+            width: 100%;
+            height: 5%;
+            margin: 15px auto;
+            text-indent: 2em;
+        }
+        .tc2 .d2 p span{
+            background-color: #096254;
+            color: #aee2d9;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-right: 2px;
+
+            opacity: 0.5;
+        }
+        .tc3 .d3 .dummy-img1{
+            width: 50%;
+            height: 45%;
+            margin: 70px auto;
+        }
+        .tc3 .d3 img{
+            width: 100%;
+            height: 100%;
+        }
+        .tc3 .d3 p{
+            width: 100%;
+            height: 3%;
+            margin: 15px auto;
+            text-indent: 2em;
+        }
+
+        .tc4 .d4 .dummy-img1{
+            width: 50%;
+            height: 45%;
+            margin: 70px auto;
+        }
+        .tc4 .d4 img{
+            width: 100%;
+            height: 100%;
+        }
+        .tc4 .d4 p{
+            width: 100%;
+            height: 2%;
+            margin: 15px auto;
+            color: #a112d9;
+            text-indent: 2em;
+        }
+        .close{
+            opacity: 1;
+            pointer-events: auto;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            right: 10px;
+            font-size: 1.6em;
+            color: #aaa;
+            cursor: pointer;
+            padding: 1em;
+            transition: opacity 0.3s;
+        }
+        .loading{
+            opacity:1;
+            display: none;
+            background: transparent url("images/preloader.gif") no-repeat center center;
+            transform: scale(0.5);
+            transition: opacity 0.5s,transform 0.5s;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom:0;
+            pointer-events: none;
+        }
+
+        .add{
+            width: 100%;
+            height: 70px;
+            margin-top: 10px;
+        }
+        .add p{
+            font-size: 24px;
+            text-indent: 2em;
+        }
+        .footer{
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            line-height:24px;
+            z-index:-100;
+            height: 14%;
+        }
+        .footer a{
+            text-decoration: none;
+            transition: 0.7s;
+            font-family:"Dancing Script";
+        }
+        .footer a:hover{
+            color: #B3EE3A;
+        }
+        .footer #contact-panel {
+            text-align: center;
+            margin-top: 1em;
+        }
+        .footer .social-share-element {
+            width: 40px;
+            height: 40px;
+            background-color: #008a75;
+            background-image: url(images/social.png);
+            transition: 0.5s;
+            display: inline-block;
+            margin-right: 2px;
+            border-bottom: none;
+            border-radius: 20px;
+        }
+        .social-share-element.social-twitter {
+            background-position: 0 0;
+        }
+        .social-share-element.social-google {
+            background-position: -80px 0;
+        }
+        .social-share-element.social-github {
+            background-position: -160px 40px;
+        }
+        .social-share-element.social-linkedin {
+            background-position: -120px 0;
+        }
+        .social-share-element.social-weibo {
+            background-position: -160px 0;
+        }
+        .social-share-element.social-douban {
+            background-position: -40px 40px;
+        }
+        .social-share-element:hover {
+            background-color: #096254;
+            border-radius: 5px;
+        }
+        .add{
+            transform: rotateX(-360deg);
+        }
+    </style>
+    <script src="js/jquery.min.js"></script>
+<body  onload="animate()">
+<div class="bg">
+    <div class="w">
+        <div class="header">
+            <ul class="left"  >
+                <li class="ADD"><a href="javascript:;"  >首页</a></li>
+                <li id="write"><a href="javascript:;">随笔</a></li>
+                <li id="jingyan"><a href="javascript:;">经历</a></li>
+                <li id="like"><a href="javascript:;">爱好</a></li>
+                <li id="about"><a href="javascript:;">关于</a></li>
+            </ul>
+            <ul class="right">
+                <li class="touxiang"><img src="images/touxiang.jpg" class="tx">
+                </li>
+                <li class="xiaoxi"><a href="javascript:;">消息</a>
+                    <div class="menu" style="display: none;">
+                        <p><a href="javascript:;" class="xx">回复我的</a></p>
+                        <p><a href="javascript:;" class="xx">@我的</a></p>
+                        <p><a href="javascript:;" class="xx">收到的赞</a></p>
+                        <p><a href="javascript:;" class="xx">系统通知</a></p>
+                        <p><a href="javascript:;" class="xx">我的私信</a></p>
+                    </div>
+                </li>
+                <li class="dt"><a href="javascript:;">动态</a>
+                    <div class="dongtai">
+                        <p><a href="javascript:;" class="xx">有待添加</a></p>
+                        <p><a href="javascript:;" class="xx">有待添加</a></p>
+                        <p><a href="javascript:;" class="xx">有待添加</a></p>
+                        <p><a href="javascript:;" class="xx">有待添加</a></p>
+                        <p><a href="javascript:;" class="xx">有待添加</a></p>
+                    </div>
+                </li>
+                <li class="ls">
+                    <a href="javascript:;">历史</a>
+                    <ul class="history">
+                        <li class="dic"><a href="javascript:;" class="xx">历史记录</a></li>
+                        <li class="dic"><a href="javascript:;" class="xx">历史记录</a></li>
+                        <li class="dic"><a href="javascript:;" class="xx">历史记录</a></li>
+                        <li class="dic"><a href="javascript:;" class="xx">历史记录</a></li>
+                        <li class="dic"><a href="javascript:;" class="xx">历史记录</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="logo">
+        <p class="txt">Discover the beauty of life</p>
+    </div>
+    <div class="content">
+        <div class="title">
+            <a class="txt1">Concern me</a>
+        </div>
+        <section class="grid3d">
+            <div class="all vertical" id="grid3d">
+                <ul>
+                    <li style="background: url('images/139814.jpg') center; opacity: 0.8"><a href="javascript:;" id="a1">教育背景</a></li>
+                    <li style="background: url('images/age.jpg') center; opacity: 0.8"><a href="javascript:;" id="a2">擅长技能</a></li>
+                    <li style="background: url('images/zuobiao.jpg') center; opacity: 0.8"><a href="javascript:;" id="a3">实习经历</a></li>
+                    <li style="background: url('images/zhuangtai2.jpg') bottom; opacity: 0.8"><a href="javascript:;" id="a4">心仪职位</a></li>
+                </ul>
+            </div>
+            <div class="tc1">
+                <div class="d1">
+                    <div class="dummy-img1"><img src="images/46179109_p0.jpg" alt=""></div>
+                        <h3 style="text-shadow: 1px 2px #22c3aa, 2px 4px #aee2d9;text-align: center;font-size: 3.5em;margin: 0 0 0.5em 0;">教育背景</h3>
+                        <h4 style="font-size: 1.5em;margin: -8px 0 0.2em 0;">吕梁学院 本科</h4>
+                        <p>物理系 电子信息工程专业</p>
+                        <p style="color: #008a75;">2016年3月毕业</p>
+                        <h6 style="font-size: 1em;margin-top: -13px;">学习过C，KeilC，C++等语言</h6>
+                    <span class="close">
+                    ×
+                </span>
+                </div>
+            </div>
+            <div class="tc2">
+                <div class="d2">
+                    <div class="dummy-img1"><img src="images/171229 .jpg" alt=""></div>
+                    <p>
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>SCSS</span>
+                        <span>javaScript</span>
+                    </p>
+                    <p>
+                        <span>jQurey</span>
+                        <span>Bootstrap</span>
+                        <span>Three.js</span>
+                        <span>Vue.js</span>
+                        <span>WebGL</span>
+                    </p>
+                    <p>
+                        <span>网页设计</span>
+                        <span>PS</span>
+                        <span>PR</span>
+                    </p>
+                    <p>
+                        <span>Python</span>
+                        <span>Django</span>
+                        <span>Flask</span>
+                    </p>
+                    <span class="close">
+                    ×
+                </span>
+                </div>
+            </div>
+            <div class="tc3">
+                <div class="d3">
+                    <div class="dummy-img1"><img src="images/59301635_p0.jpg" alt=""></div>
+                    <h2 style="text-shadow: 1px 2px #22c3aa, 2px 4px #aee2d9;text-align: center;font-size: 2.5em;">实习经历</h2>
+                    <h3 style="font-size: 1.25em;margin: 0 0 0.1em 0;margin-top: 0;">网页编辑</h3>
+                    <p style="color: #aee2d9;">2013年10月-2014年10月，2015年12月-2017年1月</p>
+                    <p>平时随手做了学院3D模型</p>
+                    <p style="color: #a112d9;">相关技术：WebGL,Three.js,javascript</p>
+                    <span class="close">
+                    ×
+                </span>
+                </div>
+            </div>
+            <div class="tc4">
+                <div class="d4">
+                    <div class="dummy-img1"><img src="images/165076 .jpg" alt=""></div>
+                    <h2 style="text-shadow: 1px 2px #22c3aa, 2px 4px #aee2d9;text-align: center;font-size: 3.5em;margin: 0 0 0.5em 0;">前端工程师</h2>
+                    <h3 style="font-size: 2em;margin: 0 0 0.2em 0;">工作地点：杭州</h3>
+                    <p>热爱FE.D，也热爱一切美好的事物</p>
+                    <h4 style="font-size: 1.25em;margin-top: 0;">喜欢优雅的代码，代码强迫症患者</h4>
+                    <span class="close">
+                    ×
+                </span>
+                </div>
+            </div>
+                <span class="loading"></span>
+        </section>
+    </div>
+    </div>
+    <div class="footer">
+        <a href="https://plus.google.com/u/0/" target="_blank" style="margin: 0 2.5px 0 4px;">google</a>
+        <a href="https://github.com/account/unverified-email" target="_blank" style="margin: 0 2.5px 0 4px;">github</a>
+        <a href="https://www.linkedin.com/in/%E6%9D%B0-%E7%99%BD-7a2902136?trk=nav_responsive_tab_profile_pic" target="_blank" style="margin: 0 2.5px 0 4px;">LinkedIn</a>
+        <a href="http://weibo.com/u/5476597182/home?wvr=5&uut=fin&from=reg" target="_blank" style="margin: 0 2.5px 0 4px;">weibo</a>
+        <a href="https://www.douban.com/people/148053109/" target="_blank" style="margin: 0 2.5px 0 4px;">douban</a>
+        <div id="contact-panel">
+            <a class="social-share-element social-google" href="https://plus.google.com/u/0/" target="_blank" title="Follow me on Google Plus"></a>
+            <a class="social-share-element social-github" href="https://github.com/account/unverified-email" target="_blank" title="Follow me on GitHub"></a>
+            <a class="social-share-element social-linkedin" href="https://www.linkedin.com/in/%E6%9D%B0-%E7%99%BD-7a2902136?trk=nav_responsive_tab_profile_pic" target="_blank" title="Follow me on LinkedIn"></a>
+            <a class="social-share-element social-weibo" href="http://weibo.com/u/5476597182/home?wvr=5&uut=fin&from=reg" target="_blank" title="Follow me on Sina Weibo"></a>
+            <a class="social-share-element social-douban" href="https://www.douban.com/people/148053109/" target="_blank" title="Follow me on Douban"></a>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(function(){
+        $('.tx').on('mouseenter',function(){
+                $('.post').stop(true,true).slideDown();
+        });
+        $('.tx').on('mouseleave',function(){
+                $('.post').hide();
+        });
+        $('.xiaoxi').on('mouseenter',function(){
+
+                $('.menu').stop(true,true).slideDown();
+
+        });
+        $('.xiaoxi').on('mouseleave',function(){
+
+                $('.menu').hide();
+
+        });
+        $('.ls').on('mouseenter',function () {
+            $('.history').stop(true,true).slideDown();
+        });
+        $('.ls').on('mouseleave',function () {
+            $('.history').stop(true,true).slideUp();
+        });
+        $('.left>li').on('click',function () {
+            $(this).addClass("ADD").siblings().removeClass("ADD");
+            alert("正在建设中");
+        });
+        $('#a1').on('click',function () {
+           $('.tc1').fadeIn();
+
+        });
+        $('.tc1>.d1>.close').click(function () {
+            $('.tc1').fadeOut();
+        });
+
+        $('#a2').on('click',function () {
+            $('.tc2').fadeIn();
+        });
+        $('.tc2>.d2>.close').click(function () {
+            $('.tc2').fadeOut();
+        });
+
+        $('#a3').on('click',function () {
+            $('.tc3').fadeIn();
+        });
+        $('.tc3>.d3>.close').click(function () {
+            $('.tc3').fadeOut();
+        });
+
+        $('#a4').on('click',function () {
+            $('.tc4').fadeIn();
+        });
+        $('.tc4>.d4>.close').click(function () {
+            $('.tc4').fadeOut();
+        });
+        $('.dt').mouseenter(function(){
+            $('.dongtai').stop(true,true).slideDown();
+        })
+        $('.dt').mouseleave(function(){
+            $('.dongtai').hide();
+        })
+    });
+
+    function animate() {
+        $('.txt').css({"transition":"all 2s"});
+    }
+
+
+</script>
