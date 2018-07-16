@@ -1,0 +1,78 @@
+#!/bin/bash
+#this is redis install program
+#set fileformat=unix
+redis_version=4.0.9
+redis_dir=/usr/local/redis2
+redis_conf=/usr/local/redis2/etc
+clear_passwd=123456
+role="slave"			#master,slave
+master_ip=192.168.152.161
+master_port=16379
+slave_port=16381
+failover="yes"			#yes,no
+if [ ! -d redis-${redis_version} ];then
+wget http://download.redis.io/releases/redis-${redis_version}.tar.gz
+tar xzf redis-${redis_version}.tar.gz
+cd redis-${redis_version}
+make
+cd src/
+make install PREFIX=${redis_dir}
+mkdir -p ${redis_conf}
+cd ../
+cp -a redis.conf ${redis_conf}
+cp -a sentinel.conf ${redis_conf}
+else
+tar xzf redis-${redis_version}.tar.gz
+cd redis-${redis_version}
+make
+cd src/
+make install PREFIX=${redis_dir}
+mkdir -p ${redis_conf}
+cd ../
+cp -a redis.conf ${redis_conf}
+cp -a sentinel.conf ${redis_conf}
+fi
+check_user=$(id redis | wc -l)
+if [ $check_user == '0' ];then
+groupadd redis
+useradd -g redis redis -s /sbin/nologin
+fi
+cd ${redis_conf}
+if [ ${role} == "master" ];then
+sed -i "s#bind 127.0.0.1#bind 0.0.0.0#g" redis.conf
+sed -i "s#daemonize no#daemonize yes#g" redis.conf
+sed -i "s#protected-mode yes#protected-mode no#g" redis.conf
+sed -i "s@# requirepass foobared@requirepass ${clear_passwd}@g" redis.conf
+sed -i "s#port 6379#port ${master_port}#g" redis.conf
+sed -i "s#pidfile /var/run/redis_6379.pid#pidfile ${redis_dir}/redis_${master_port}.pid#g" redis.conf
+sed -i "s#dir ./#dir ${redis_dir}#g" redis.conf
+sed -i 's#logfile ""#logfile "'${redis_dir}'/redis.log"#g' redis.conf
+fi
+if [ ${role} == "slave" ];then
+sed -i "s#bind 127.0.0.1#bind 0.0.0.0#g" redis.conf
+sed -i "s#daemonize no#daemonize yes#g" redis.conf
+sed -i "s#protected-mode yes#protected-mode no#g" redis.conf
+sed -i "s@# requirepass foobared@requirepass ${clear_passwd}@g" redis.conf
+sed -i "s#port 6379#port ${slave_port}#g" redis.conf
+sed -i "s#pidfile /var/run/redis_6379.pid#pidfile ${redis_dir}/redis_${slave_port}.pid#g" redis.conf
+sed -i "s@# slaveof <masterip> <masterport>@slaveof ${master_ip} ${master_port}@g" redis.conf
+sed -i "s@# masterauth <master-password>@masterauth ${clear_passwd}@g" redis.conf
+sed -i "s#dir ./#dir ${redis_dir}#g" redis.conf
+sed -i 's#logfile ""#logfile "'${redis_dir}'/redis.log"#g' redis.conf
+fi
+if [ ${failover} == "yes" ];then
+sed -i "s#sentinel monitor mymaster 127.0.0.1 6379 2#sentinel monitor mymaster ${master_ip} ${master_port} 1#g" sentinel.conf
+sed -i "s@# sentinel auth-pass <master-name> <password>@sentinel auth-pass mymaster ${clear_passwd}@g" sentinel.conf
+echo "daemonize yes" >> sentinel.conf
+echo 'logfile "./sentinel.log"' >> sentinel.conf
+fi
+check_profile=$(cat /etc/profile | grep redis | wc -l)
+if [ $check_profile == '0' ];then
+cat >> /etc/profile <<-EOF
+export PATH="\$PATH:/usr/local/redis/bin"
+EOF
+fi
+source /home/redis/.bash_profile
+chown -R redis:redis ${redis_dir}
+#sudo -u redis ${redis_dir}/bin/redis-server ${redis_conf}/redis.conf
+#./redis-sentinel /usr/local/redis/etc/sentinel.conf
